@@ -1,0 +1,222 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity" >
+
+    <ImageButton
+        android:id="@+id/submit"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/submit_icon"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:layout_alignParentRight="true"
+        android:text="@string/submit" />
+
+    <LinearLayout
+        android:id="@+id/inputLine"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/code_input_bg"
+        android:orientation="horizontal"
+        android:layout_toLeftOf="@id/submit" >
+
+        <EditText
+            android:id="@+id/codeInput"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:hint="@string/plsInputDrugCode"
+            android:imeOptions="actionSearch"
+            android:inputType="numberSigned"
+            android:maxLength="20"
+            android:singleLine="true"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/imgScan"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/scan_btn" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/drugScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding = "3dp"
+        android:visibility="gone"
+        android:layout_below="@id/inputLine"
+        >
+        
+        <SurfaceView
+            android:id="@+id/preview_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center" />
+
+        <com.zxing.view.ViewfinderView
+            android:id="@+id/viewfinder_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent" />
+         
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/drugInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:visibility="visible"
+        android:layout_below="@id/inputLine"
+        >
+        
+        <TextView 
+            android:id="@+id/drugCodeLabel"
+            style="@style/labelTextView"
+            android:textStyle="bold"
+            android:text="监管码"
+            />
+        <TextView 
+            android:id="@+id/drugCode"
+            style="@style/labelTextInfo"
+            android:layout_toRightOf="@id/drugCodeLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugNameLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugCodeLabel"
+            android:textStyle="bold"
+            android:text="药品名称"
+            />
+        <TextView 
+            android:id="@+id/drugName"
+            style="@style/labelTextInfo"
+            android:layout_toRightOf="@id/drugNameLabel"
+            android:layout_below="@id/drugCode"
+            />
+        
+        <TextView 
+            android:id="@+id/drugSpeciLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugNameLabel"
+            android:textStyle="bold"
+            android:text="药品规格"
+            />
+        <TextView 
+            android:id="@+id/drugSpeci"
+            style="@style/labelTextInfo"
+            android:layout_below="@id/drugName"
+            android:layout_toRightOf="@id/drugSpeciLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugPackLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugSpeciLabel"
+            android:textStyle="bold"
+            android:text="包装规格"
+            />
+        <TextView 
+            android:id="@+id/drugPack"
+            style="@style/labelTextInfo"
+            android:layout_below="@id/drugSpeci"
+            android:layout_toRightOf="@id/drugPackLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugBussLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugPackLabel"
+            android:textStyle="bold"
+            android:text="生产企业"
+            />
+        <TextView 
+            android:id="@+id/drugBuss"
+            style="@style/labelTextInfo"
+            android:layout_below="@id/drugPack"
+            android:layout_toRightOf="@id/drugBussLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugDateLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugBussLabel"
+            android:textStyle="bold"
+            android:text="生产日期"
+            />
+        <TextView 
+            android:id="@+id/drugDate"
+            style="@style/labelTextInfo"
+            android:layout_below="@id/drugBuss"
+            android:layout_toRightOf="@id/drugDateLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugBatchLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugDateLabel"
+            android:textStyle="bold"
+            android:text="产品批号"
+            />
+        <TextView 
+            android:id="@+id/drugBatch"
+            style="@style/labelTextInfo"
+            android:layout_below="@id/drugDate"
+            android:layout_toRightOf="@id/drugBatchLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugPeriodLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugBatchLabel"
+            android:text="有效期"
+            />
+        <TextView 
+            android:id="@+id/drugPeriod"
+            style="@style/labelTextInfo"
+            android:layout_below="@id/drugBatch"
+            android:layout_toRightOf="@id/drugPeriodLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugApprovalLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugPeriodLabel"
+            android:text="批准号"
+            />
+        <TextView 
+            android:id="@+id/drugApproval"
+            style="@style/labelTextInfo"
+            android:layout_below="@id/drugPeriod"
+            android:layout_toRightOf="@id/drugApprovalLabel"
+            />
+        
+        <TextView 
+            android:id="@+id/drugFlowLabel"
+            style="@style/labelTextView"
+            android:layout_below="@id/drugApprovalLabel"
+            android:text="药品流向"
+            />
+        <TextView 
+            android:id="@+id/drugFlow"
+            style="@style/labelTextInfo"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/drugFlowLabel"
+            />
+    </RelativeLayout>
+     
+
+</RelativeLayout>
